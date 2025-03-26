@@ -16,7 +16,9 @@
         "dotenv": "^16.4.7",
         "ejs": "^3.1.10",
         "express": "^4.21.2",
-        "mysql2": "^3.14.0"
+        "mysql2": "^3.14.0",
+        "sequelize": "^6.37.6",
+        "sequelize-cli": "^6.6.2"
     },
     "devDependencies": {
         "@babel/core": "^7.26.10",

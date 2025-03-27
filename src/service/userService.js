@@ -25,35 +25,17 @@ const createNewUser = async (email, password, username) => {
 };
 
 const getUserList = async () => {
-    const connection = await mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        database: 'abc',
-        Promise: Bluebird,
-    });
-
-    try {
-        const [rows, fields] = await connection.execute('SELECT * FROM user');
-        return rows;
-    } catch (error) {
-        console.log(error);
-    }
+    let users = [];
+    users = await db.User.findAll();
+    return users;
 };
 
-const deleteUser = async (id) => {
-    const connection = await mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        database: 'abc',
-        Promise: Bluebird,
+const deleteUser = async (userId) => {
+    await db.User.destroy({
+        where: {
+            id: userId,
+        },
     });
-
-    try {
-        const [rows, fields] = await connection.execute('DELETE FROM user WHERE id=?', [id]);
-        return rows;
-    } catch (error) {
-        console.log(error);
-    }
 };
 
 export default {
